@@ -3,9 +3,9 @@ from flask import Flask, request, abort
 app = Flask(__name__)
 
 
-@app.route('/webhook', methods=['PUT'])
+@app.route('/webhook', methods=['POST'])
 def webhook():
-	if request.method == 'PUT':
+	if request.method == 'POST':
 		print(request)
 		return 'success', 200
 	else:
