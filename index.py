@@ -3,12 +3,12 @@ from flask import Flask, request, abort
 app = Flask(__name__)
 
 
-@app.route('/webhook', methods=['PUT'])
+@app.route('/webhook', methods=['POST'])
 def webhook():
-	if request.method == 'PUT':
+	if request.method == 'POST':
 		print(request.json)
-		with open('file.txt', 'a+') as data:
-    			data.write(request.json+'\n')
+		with open('/opt/lampp/htdocs/webhook/file.txt', 'a+') as data:
+    			data.write(request.json)
 
 		return 'success', 200
 	else:
